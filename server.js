@@ -33,7 +33,9 @@ async function employeeTracker (){
 
     // show role table
     if(response.request === 'View All Roles'){
-        db.query(`SELECT * FROM role`, (err, result)=>{
+        db.query(`SELECT R.id AS id, title, salary, D.name AS department
+           FROM role AS R LEFT JOIN department AS D
+           ON R.department_id = D.id;`, (err, result)=>{
             if (err) throw err;
             console.log("View All Roles: ");
             console.table(result);
@@ -44,7 +46,11 @@ async function employeeTracker (){
 
     // show employee table
     if(response.request === 'View All Employees'){
-        db.query(`SELECT * FROM employee`, (err, result)=>{
+        db.query(`SELECT E.id AS id, E.first_name AS first_name, E.last_name AS last_name, 
+          R.title AS role, D.name AS department, CONCAT(M.first_name, " ", M.last_name) AS manager
+          FROM employee AS E LEFT JOIN role AS R ON E.role_id = R.id
+          LEFT JOIN department AS D ON R.department_id = D.id
+          LEFT JOIN employee AS M ON E.manager_id = M.id;`, (err, result)=>{
             if (err) throw err;
             console.log("View All Employees: ");
             console.table(result);
