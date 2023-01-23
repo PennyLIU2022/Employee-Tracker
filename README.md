@@ -45,7 +45,7 @@ A command-line application allows the user to:
 - Update employee roles
 
 ## Walkthrough Video
-![employee-tracker]()
+![employee-tracker](https://drive.google.com/file/d/17V_Iyh-6FxxIcl0iTJPosnBfsCeVccTe/view)
 
 ## Questions
 If you have any questions, you can find [my Github](https://github.com/PennyLIU2022) and reach me by email at: pennyliu@gmail.com
